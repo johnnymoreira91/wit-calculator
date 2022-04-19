@@ -1,13 +1,32 @@
-// import calculatorPlus from '@controllers/calculator/plus'
-// import express from 'express'
+const request = require("supertest");
+const app = require("../index");
+const mongoDB = require('../database/index')
 
-// describe('it should test the plus controller', () => {
-//   it('should test first', () => {
-//     let numberOne = 4
-//     let numberTwo = 2
-//     const req = ex
-//     calculatorPlus.store(Request<{}, {}, {
-//       numberOne: number, numberTwo: number
-//     }>)
-//   })
-// })
+// describe("Test the root path", () => {
+//   test("It should response the GET method", done => {
+//     request(app)
+//       .get("/")
+//       .then(response => {
+//         expect(response.statusCode).toBe(200);
+//         done();
+//       });
+//   });
+
+// });
+
+describe("Test the root path", async() => {
+  beforeAll(async() => {
+    mongoDB.connect();
+  });
+
+  afterAll(async(done) => {
+    mongoDB.disconnect(done);
+  });
+  test("It should response the GET method", async() => {
+    return request(app)
+      .get("/admin/logger/list")
+      .then(response => {
+        expect(response.statusCode).toBe(200);
+      });
+  });
+});

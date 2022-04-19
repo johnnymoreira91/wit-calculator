@@ -1,12 +1,11 @@
 import express from 'express'
 import adminController from '@controllers/AdminController'
-// import authMiddleware from '../middlewares/'
+import csvController from '@controllers/csvController'
 
 const router = express.Router()
 
-// router.use(authMiddleware);
 
 router.get('/logger/list', adminController.getAll)
-// router.post('/', adminController.store)
+router.post('/importCsv', csvController.store)
 
 export default router

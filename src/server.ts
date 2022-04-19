@@ -17,8 +17,6 @@ app.use(helmet())
 app.use(express.urlencoded({ extended: false }))
 app.use(cors())
 
-let loggerFull = global.loggerFull = true 
-
 app.use('/admin', AdminRoute)
 app.use('/calculator', calculatorRoute)
 

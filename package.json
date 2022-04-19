@@ -10,7 +10,7 @@
     "stop": "pm2 stop all && pm2 delete all",
     "start": "NODE_ENV=prod node dist/index.js",
     "dev": "NODE_ENV=dev ts-node-dev -r tsconfig-paths/register --respawn --transpile-only --ignore-watch node_modules --no-notify src/index.ts",
-    "test": "jest"
+    "test": "jest --detectOpenHandles"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.1",
@@ -34,6 +34,8 @@
     "eslint-plugin-standard": "^4.0.1",
     "jest": "^26.0.1",
     "prettier": "^2.0.5",
+    "superagent": "^7.1.2",
+    "supertest": "^6.2.2",
     "ts-jest": "^26.1.0",
     "ts-node-dev": "^1.0.0-pre.49",
     "tsconfig-paths": "^3.9.0",
@@ -46,6 +48,7 @@
     "helmet": "^5.0.2",
     "mongoose": "^6.2.1",
     "morgan": "^1.10.0",
+    "node-cron": "^3.0.0",
     "pm2": "^5.1.2",
     "uuid": "^8.3.2",
     "winston": "^3.5.1"

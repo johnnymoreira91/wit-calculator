@@ -7,6 +7,7 @@ export default {
   }>, res: Response) {
     res.header('Content-Type', 'application/json');
     res.set('Content-operation', '+/plus')
+    res.set('Content-id', req.id)
     req.operation = '+'
     const { numberOne, numberTwo } = req.body
     try {
@@ -15,12 +16,14 @@ export default {
         if (!result) {
           return res.status(400).json('one of numbers is null')
         }
+        let message = `${numberOne} + ${numberTwo} = ${result}`
+        req.result = message
         return res.status(200).json({
-          result: result,
+          id: req.id,
+          result: message,
           operation: '+'
         })
       } else {
-        throw new Error('BROKEN')
         return res.status(400).json('you put a string, change to number')
       }
     } catch (error) {
