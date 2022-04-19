@@ -2,15 +2,6 @@ import { Request, Response, NextFunction } from 'express'
 import { v4 as uuidv4 } from 'uuid'
 import { Logger } from '@models/Logger'
 
-import fs from 'fs'
-
-export let logger = false
-export const toggleLogger = () => {
-  logger = !logger
-}
-
-const file = fs.createWriteStream('cache.csv', 'utf-8')
-
 var myLogger = async function (req: Request, res: Response, next: NextFunction) {
   let idLogger = uuidv4()
   req.id = idLogger
@@ -30,8 +21,6 @@ var myLogger = async function (req: Request, res: Response, next: NextFunction) 
       result: req.result
     }
     console.log(obj);
-
-    file.write(Object.values(obj).join('\t') + '\n')
   
     await Logger.create({...obj})
   })

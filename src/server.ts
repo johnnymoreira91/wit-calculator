@@ -6,7 +6,8 @@ import helmet from 'helmet'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import myLogger from './middlewares/logger'
-import responseTime from 'response-time'
+import nodeCron from 'node-cron'
+import saveLog, { cron, logger } from './services/importCsv'
 dotenv.config()
 
 const app = express()
@@ -23,5 +24,15 @@ app.use('/calculator', calculatorRoute)
 app.get('/', (request, response) => {
   return response.json({ message: 'Hello World' })
 })
+
+nodeCron.schedule(cron, () => {
+  console.log('running a task to add log into csv');
+  saveLog()
+});
+
+
+if (logger === true) {
+
+}
 
 export default app
