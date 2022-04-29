@@ -27,12 +27,9 @@ app.get('/', (request, response) => {
 
 nodeCron.schedule(cron, () => {
   console.log('running a task to add log into csv');
-  saveLog()
+  if (logger === true) {
+    saveLog()
+  }
 });
-
-
-if (logger === true) {
-
-}
 
 export default app

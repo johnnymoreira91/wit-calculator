@@ -18,6 +18,6 @@ export default async function saveLog() {
       date: new Date()
     }
   } catch (error) {
-    
+    return error
   }
 }

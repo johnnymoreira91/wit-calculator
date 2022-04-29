@@ -18,7 +18,7 @@ var myLogger = async function (req: Request, res: Response, next: NextFunction) 
       responseTime: elapsedTimeInMs,
       statusCode: res.statusCode,
       operation: req.operation,
-      result: req.result
+      result: req.result || null
     }
     console.log(obj);
   

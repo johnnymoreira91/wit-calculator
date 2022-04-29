@@ -7,7 +7,7 @@ interface LoggerInterface {
   responseTime: number,
   statusCode: number,
   operation: string,
-  result: string,
+  result?: string,
   createdAt: Date
 }
 
@@ -19,7 +19,7 @@ const schema = new mongoose.Schema<LoggerInterface>({
   responseTime: { type: Number, required: true },
   statusCode: { type: Number, required: true },
   operation:  { type: String, required: true },
-  result: { type: String, required: true },
+  result: { type: String, required: false },
   createdAt: { type: Date, default: Date.now }
 })
 

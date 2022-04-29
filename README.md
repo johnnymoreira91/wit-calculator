@@ -1,25 +1,47 @@
-# TS + Mongo
+# WIT Test
+## How to use
+You can see the routes bellow
 
-## This is it
+## How to test
 
-This is a initial server with typescript
-  - typescript
-  - jest
-  - babel
-  - eslint
-  - mongoDb
+yarn test/ npm run test
 
-## How to start?
+# Routes
 
-  - add on the root folder .env
-    - MONGO_USER=root
-    - MONGO_PASSWORD=InitialPassWord
-    - MONGO_DATABASE=yourDataBase
+## /calculator/plus
+  fields:
+    - numberOne: number
+    - numberTwo: number
 
-  i'm using yarn, but you can use npm run
+## /calculator/minus
+  fields:
+    - numberOne: number
+    - numberTwo: number
+    
 
-  - yarn install / npm install
-  - yarn build - to create on ./dist the compiled version
-  - yarn prod - to execute pm2 with production 
-  - yar dev - to execute as a development
+## /calculator/divided
+  fields:
+    - numberOne: number
+    - numberTwo: number
 
+## /calculator/multiplied
+  fields:
+    - numberOne: number
+    - numberTwo: number
+    
+# Validation Route
+
+## /calculator/validation/:{id}
+  You have to find the logId on <b>/admin/logger/list</b>
+  get the id and enjoy
+
+## csv controller
+This route is to change the log save
+  fields:
+  - importCsv
+  - cronTime
+
+  importCsv default: false
+  crontTime default '10 * * * *'
+
+  if change importCsv to true, the same is going to save a new jsonFile with the logs
